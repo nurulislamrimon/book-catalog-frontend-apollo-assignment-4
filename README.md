@@ -1,5 +1,5 @@
 # Book Catalog
 
-### client side (link)[https://book-catalog-frontend-ten.vercel.app/]
-### server side (link)[https://book-catalog-backend-eosin.vercel.app/]
+### client side [https://book-catalog-frontend-ten.vercel.app/](link)
+### server side [https://book-catalog-backend-eosin.vercel.app/](link)
 
