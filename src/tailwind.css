@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components{
+    .nav-container{
+        @apply w-screen grid grid-cols-2 p-5 items-center
+    }
+    .main-logo{
+        @apply bg-gradient-to-l from-indigo-700 via-purple-700 to-pink-700 text-3xl text-transparent bg-clip-text font-extrabold font-kablammo
+    }
+    .menu{
+        @apply text-red-700 font-bold text-lg flex justify-around items-center flex-row
+    }
+    
+    .active-menu{
+        @apply bg-gradient-to-l from-indigo-700 via-purple-700 to-pink-700 text-transparent bg-clip-text
+    }
+    .input-container{
+        @apply form-control w-full max-w-md
+    }
+    .form-input{
+        @apply input input-bordered w-full max-w-md
+    }
+}
