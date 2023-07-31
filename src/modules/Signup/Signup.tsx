@@ -1,10 +1,17 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
-import auth from "../../../firebase.config";
 import { Link, useNavigate } from "react-router-dom";
+import { createUser } from "../../redux/slices/user.slice";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useState } from "react";
 
 const Signup = () => {
   const [error, setError] = useState("");
+  const dispatch = useAppDispatch();
+  const {
+    user,
+    isLoading,
+    error: apiError,
+    isError,
+  } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -17,19 +24,22 @@ const Signup = () => {
       return setError("Please enter email and password!");
     } else if (password !== confirmPassword) {
       return setError("Confirm password dosen't matched!");
+    } else {
+      dispatch(createUser({ email, password }));
     }
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        navigate("/");
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
   };
 
   const handleInput = () => {
     setError("");
   };
+
+  if (isLoading) {
+    return <p className="text-center">Loading...</p>;
+  }
+  if (user) {
+    navigate("/");
+  }
+
   return (
     <div className="w-screen h-screen flex items-center justify-center">
       <form
@@ -71,7 +81,9 @@ const Signup = () => {
             className="form-input"
           />
         </div>
-        {error && <p className="mb-2 text-red-600 text-center">{error}</p>}
+        {(error || isError) && (
+          <p className="mb-2 text-red-600 text-center">{error || apiError}</p>
+        )}
         <button className="btn btn-primary">Submit</button>
         <small className="mt-2 text-center">
           Don't have an account? Go to{" "}

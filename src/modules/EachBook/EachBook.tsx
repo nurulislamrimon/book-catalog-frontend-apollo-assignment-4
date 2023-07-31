@@ -36,7 +36,7 @@ const EachBook = () => {
       </div>
       <div>
         <img src={bookplaceholder} alt="" className="mb-3" />
-        <RatingStar rating={3.2} />
+        <RatingStar rating={4.2} />
       </div>
     </div>
   );

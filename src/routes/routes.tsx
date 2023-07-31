@@ -5,7 +5,7 @@ import Profile from "../modules/Profile/Profile";
 import Layout from "../modules/Layout";
 import Login from "../modules/Login/Login";
 import Signup from "../modules/Signup/Signup";
-import Books from "../modules/Books/Books";
+import AllBooks from "../modules/AllBooks/AllBooks";
 import EachBook from "../modules/EachBook/EachBook";
 
 export const router = createBrowserRouter([
@@ -22,8 +22,8 @@ export const router = createBrowserRouter([
         element: <Profile />,
       },
       {
-        path: "/books",
-        element: <Books />,
+        path: "/allbooks",
+        element: <AllBooks />,
       },
       {
         path: "/books/:id",

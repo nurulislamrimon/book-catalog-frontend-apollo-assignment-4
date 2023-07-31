@@ -1,14 +1,11 @@
-import { signOut, onAuthStateChanged } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import { NavLink } from "react-router-dom";
 import auth from "../../firebase.config";
-import { User } from "firebase/auth/cordova";
-import { useState } from "react";
+import { useAppSelector } from "../redux/hooks";
 
 const Navbar = () => {
-  const [user, setUser] = useState<User | null>(null);
-  onAuthStateChanged(auth, (loggedUser) => {
-    setUser(loggedUser);
-  });
+  const { user } = useAppSelector((state) => state.user);
+  console.log(user);
 
   const navs = [
     {
@@ -20,8 +17,8 @@ const Navbar = () => {
       text: "Profile",
     },
     {
-      path: "/books",
-      text: "Books",
+      path: "/allbooks",
+      text: "All",
     },
   ];
   user ||
