@@ -6,6 +6,7 @@ import Layout from "../modules/Layout";
 import Login from "../modules/Login/Login";
 import Signup from "../modules/Signup/Signup";
 import Books from "../modules/Books/Books";
+import EachBook from "../modules/EachBook/EachBook";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
       {
         path: "/books",
         element: <Books />,
+      },
+      {
+        path: "/books/:id",
+        element: <EachBook />,
       },
     ],
   },

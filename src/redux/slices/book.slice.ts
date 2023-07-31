@@ -12,7 +12,10 @@ export const bookApi = createApi({
     getAllBooks: builder.query<IResponse<IBook[]>, null>({
       query: () => `/books`,
     }),
+    getABook: builder.query<IResponse<IBook>, string | undefined>({
+      query: (id: string) => `/books/${id}`,
+    }),
   }),
 });
 
-export const { useGetAllBooksQuery } = bookApi;
+export const { useGetAllBooksQuery, useGetABookQuery } = bookApi;
