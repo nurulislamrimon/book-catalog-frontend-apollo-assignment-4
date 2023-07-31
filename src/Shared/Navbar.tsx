@@ -53,9 +53,7 @@ const Navbar = () => {
         {user && (
           <button
             onClick={() => {
-              signOut(auth)
-                .then(() => console.log("Signout"))
-                .catch((e) => console.log(e));
+              signOut(auth);
             }}
           >
             Log out

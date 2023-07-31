@@ -4,8 +4,9 @@
 
 
 @layer components{
+    /* nav bar */
     .nav-container{
-        @apply w-screen grid grid-cols-2 p-5 items-center
+        @apply w-screen grid grid-cols-2 p-5 items-center border-b fixed z-50 backdrop-blur-lg
     }
     .main-logo{
         @apply bg-gradient-to-l from-indigo-700 via-purple-700 to-pink-700 text-3xl text-transparent bg-clip-text font-extrabold font-kablammo
@@ -14,9 +15,13 @@
         @apply text-red-700 font-bold text-lg flex justify-around items-center flex-row
     }
     
-    .active-menu{
-        @apply bg-gradient-to-l from-indigo-700 via-purple-700 to-pink-700 text-transparent bg-clip-text
+    .menu a:hover,.menu button:hover{
+        @apply bg-gradient-to-l from-indigo-700 via-purple-700 to-pink-700 text-transparent bg-clip-text duration-1000
     }
+    .active-menu{
+        @apply bg-gradient-to-l from-indigo-700 via-purple-700 to-pink-700 text-transparent bg-clip-text duration-1000
+    }
+    /* form */
     .input-container{
         @apply form-control w-full max-w-md
     }
