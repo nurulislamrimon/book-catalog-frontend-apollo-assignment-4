@@ -5,7 +5,7 @@ interface BookCardProps {
   book: IBook;
 }
 const BookCard = ({ book }: BookCardProps) => {
-  const { _id, title, author, genre, publicationDate, reviews } = book;
+  const { _id, title, author, genre, publicationDate } = book;
   const navigate = useNavigate();
 
   return (
@@ -20,10 +20,6 @@ const BookCard = ({ book }: BookCardProps) => {
         <p>
           Publication Date: {new Date(publicationDate).toLocaleDateString()}
         </p>
-        {reviews && <p>{"fkdjf"}</p>}
-        <div className="card-actions justify-end">
-          <button className="btn">Buy Now</button>
-        </div>
       </div>
     </div>
   );

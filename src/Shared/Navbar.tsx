@@ -5,20 +5,19 @@ import { useAppSelector } from "../redux/hooks";
 
 const Navbar = () => {
   const { user } = useAppSelector((state) => state.user);
-  console.log(user);
 
   const navs = [
     {
       path: "/",
-      text: "Home",
+      text: "All Books",
+    },
+    {
+      path: "/add-new-book",
+      text: "Add New Book",
     },
     {
       path: "/profile",
       text: "Profile",
-    },
-    {
-      path: "/allbooks",
-      text: "All",
     },
   ];
   user ||

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useGetABookQuery } from "../../redux/slices/book.slice";
 import bookplaceholder from "/images/bookplaceholder.jpg";
-import RatingStar from "../../Utils/RatingStar";
+import RatingStar from "../../Components/RatingStar";
 
 const EachBook = () => {
   const { id } = useParams();

@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../modules/Home/home";
 import NotFound from "../modules/NotFound/NotFound";
 import Profile from "../modules/Profile/Profile";
 import Layout from "../modules/Layout";
@@ -7,6 +6,7 @@ import Login from "../modules/Login/Login";
 import Signup from "../modules/Signup/Signup";
 import AllBooks from "../modules/AllBooks/AllBooks";
 import EachBook from "../modules/EachBook/EachBook";
+import AddNewBook from "../modules/AddNewBook/AddNewBook";
 
 export const router = createBrowserRouter([
   {
@@ -15,15 +15,15 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <AllBooks />,
+      },
+      {
+        path: "/add-new-book",
+        element: <AddNewBook />,
       },
       {
         path: "/profile",
         element: <Profile />,
-      },
-      {
-        path: "/allbooks",
-        element: <AllBooks />,
       },
       {
         path: "/books/:id",

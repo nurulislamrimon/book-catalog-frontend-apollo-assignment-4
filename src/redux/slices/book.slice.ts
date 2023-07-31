@@ -15,7 +15,15 @@ export const bookApi = createApi({
     getABook: builder.query<IResponse<IBook>, string | undefined>({
       query: (id: string) => `/books/${id}`,
     }),
+    postABook: builder.mutation({
+      query: (payload) => ({
+        url: `/books`,
+        method: "post",
+        body: payload,
+      }),
+    }),
   }),
 });
 
-export const { useGetAllBooksQuery, useGetABookQuery } = bookApi;
+export const { useGetAllBooksQuery, useGetABookQuery, usePostABookMutation } =
+  bookApi;
