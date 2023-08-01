@@ -1,7 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { createUser } from "../../redux/slices/user.slice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Loading from "../../Components/Loading";
 
 const Signup = () => {
   const [error, setError] = useState("");
@@ -14,6 +15,13 @@ const Signup = () => {
   } = useAppSelector((state) => state.user);
   const navigate = useNavigate();
 
+  
+  useEffect(()=>{  
+    if (user) {
+      navigate("/");
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[user])
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleFormSubmit = (e: any) => {
     e.preventDefault();
@@ -34,10 +42,7 @@ const Signup = () => {
   };
 
   if (isLoading) {
-    return <p className="text-center">Loading...</p>;
-  }
-  if (user) {
-    navigate("/");
+    return <Loading/>
   }
 
   return (

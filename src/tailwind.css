@@ -3,29 +3,37 @@
 @tailwind utilities;
 
 
-@layer components{
+@layer components {
+
     /* nav bar */
-    .nav-container{
+    .nav-container {
         @apply w-screen grid grid-cols-2 p-5 items-center border-b fixed z-50 backdrop-blur-lg
     }
-    .main-logo{
+
+    .main-logo {
         @apply bg-gradient-to-l from-indigo-700 via-purple-700 to-pink-700 text-3xl text-transparent bg-clip-text font-extrabold font-kablammo
     }
-    .menu{
+
+    .menu {
         @apply text-red-700 font-bold text-lg flex justify-around items-center flex-row
     }
-    
-    .menu a:hover,.menu button:hover{
+
+    .menu a:hover,
+    .menu button:hover {
         @apply bg-gradient-to-l from-indigo-700 via-purple-700 to-pink-700 text-transparent bg-clip-text duration-1000
     }
-    .active-menu{
+
+    .active-menu {
         @apply bg-gradient-to-l from-indigo-700 via-purple-700 to-pink-700 text-transparent bg-clip-text duration-1000
     }
+
     /* form */
-    .input-container{
+    .input-container {
         @apply form-control w-full max-w-md
     }
-    .form-input{
+
+    .form-input {
         @apply input input-bordered w-full max-w-md
     }
+
 }

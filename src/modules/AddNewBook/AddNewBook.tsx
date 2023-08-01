@@ -2,12 +2,14 @@ import { useState } from "react";
 import Input from "../../Components/Input";
 import validator from "validator";
 import { usePostABookMutation } from "../../redux/slices/book.slice";
+import Loading from "../../Components/Loading";
+import Toast from "../../Components/Toast";
 
 const AddNewBook = () => {
   const [postABook, { isLoading, isSuccess, isError }] = usePostABookMutation();
-
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<boolean>(true);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleFormSubmit = (e: any) => {
     e.preventDefault();
@@ -29,7 +31,7 @@ const AddNewBook = () => {
   };
 
   if (isLoading) {
-    return <p className="text-center">Loading...</p>;
+    return <Loading/>
   }
   if (isError) {
     return <p>An error occured!</p>;
@@ -37,6 +39,7 @@ const AddNewBook = () => {
 
   return (
     <div>
+      {(isSuccess&&success)&&<Toast message="Message sent successfully." fn={setSuccess}/>}
       <form
         onSubmit={handleFormSubmit}
         onInput={handleInput}

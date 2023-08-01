@@ -1,4 +1,5 @@
 import BookCard from "../../Components/BookCard";
+import Loading from "../../Components/Loading";
 import { IBook } from "../../interfaces/Book.interface";
 import { useGetAllBooksQuery } from "../../redux/slices/book.slice";
 
@@ -8,7 +9,7 @@ function AllBooks() {
   const error: any = apiError;
 
   if (isLoading) {
-    return <p className="text-center">Loading...</p>;
+    return <Loading/>
   }
   if (error) {
     return <p className="text-center">{error?.status}</p>;

@@ -7,6 +7,7 @@ import Signup from "../modules/Signup/Signup";
 import AllBooks from "../modules/AllBooks/AllBooks";
 import EachBook from "../modules/EachBook/EachBook";
 import AddNewBook from "../modules/AddNewBook/AddNewBook";
+import ProtectedRoute from "../Utils/ProtectedRoute";
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +20,9 @@ export const router = createBrowserRouter([
       },
       {
         path: "/add-new-book",
-        element: <AddNewBook />,
+        element: (<ProtectedRoute>
+        <AddNewBook />,
+        </ProtectedRoute>)
       },
       {
         path: "/profile",

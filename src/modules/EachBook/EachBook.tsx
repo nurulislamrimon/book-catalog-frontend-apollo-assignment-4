@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useGetABookQuery } from "../../redux/slices/book.slice";
 import bookplaceholder from "/images/bookplaceholder.jpg";
 import RatingStar from "../../Components/RatingStar";
+import Loading from "../../Components/Loading";
 
 const EachBook = () => {
   const { id } = useParams();
@@ -12,7 +13,7 @@ const EachBook = () => {
   const error: any = apiError;
 
   if (isLoading) {
-    return <p className="text-center">Loading...</p>;
+    return <Loading/>
   }
   if (error) {
     return <p className="text-center">{error?.status}</p>;

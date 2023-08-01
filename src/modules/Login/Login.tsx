@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { loginUser } from "../../redux/slices/user.slice";
+import Loading from "../../Components/Loading";
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -13,7 +14,14 @@ const Login = () => {
     isError,
     error: apiError,
   } = useAppSelector((state) => state.user);
-
+  
+  useEffect(()=>{
+  
+    if (user) {
+      navigate("/");
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[user])
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleFormSubmit = (e: any) => {
     e.preventDefault();
@@ -29,11 +37,8 @@ const Login = () => {
     setError("");
   };
 
-  if (user) {
-    navigate("/");
-  }
   if (isLoading) {
-    return <p className="text-center">Loading...</p>;
+    return <Loading/>
   }
   return (
     <div className="w-screen h-screen flex items-center justify-center">
