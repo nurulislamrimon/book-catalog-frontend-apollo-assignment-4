@@ -1,6 +1,6 @@
 import { IFileringField } from "../interfaces/Book.interface";
-import { useAppDispatch } from "../redux/hooks";
-import { createFilter } from "../redux/slices/filter.book.slice";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { createUserSelectedFilterList } from "../redux/slices/filter.book.slice";
 
 const Filter = ({
   label,
@@ -10,11 +10,12 @@ const Filter = ({
   options: string[];
 }) => {
   const dispatch = useAppDispatch();
+  const { author, genre } = useAppSelector((state) => state.userSelectedFilter);
 
   const handleFilter = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const field = label;
     const value = e.target.value || null;
-    dispatch(createFilter({ field, value }));
+    dispatch(createUserSelectedFilterList({ field, value }));
   };
   return (
     <div className="flex items-center bg-slate-500 rounded-lg">
@@ -27,7 +28,11 @@ const Filter = ({
       >
         <option value="">{`Select ${label} to filter`}</option>
         {options.map((option, i) => (
-          <option value={option} key={i}>
+          <option
+            value={option}
+            key={i}
+            selected={option === author || option === genre}
+          >
             {option.toUpperCase()}
           </option>
         ))}

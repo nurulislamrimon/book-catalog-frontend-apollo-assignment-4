@@ -1,5 +1,4 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { IFileringField } from "../../interfaces/Book.interface";
 
 interface IInitialState {
   author: string | null;
@@ -11,12 +10,12 @@ const initialState: IInitialState = {
   genre: null,
 };
 export const filterSlice = createSlice({
-  name: "filter",
+  name: "userselectedfilter",
   initialState,
   reducers: {
-    createFilter: (
+    createUserSelectedFilterList: (
       state,
-      action: PayloadAction<{ field: IFileringField; value: string | null }>
+      action: PayloadAction<{ field: "author" | "genre"; value: string | null }>
     ) => {
       return {
         ...state,
@@ -25,5 +24,5 @@ export const filterSlice = createSlice({
     },
   },
 });
-export const { createFilter } = filterSlice.actions;
+export const { createUserSelectedFilterList } = filterSlice.actions;
 export default filterSlice.reducer;
