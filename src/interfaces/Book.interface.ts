@@ -6,3 +6,6 @@ export interface IBook {
   publicationDate: string;
   reviews?: [{ reviewer: string; review: number }];
 }
+
+
+export type IFileringField='author'|'genre';
